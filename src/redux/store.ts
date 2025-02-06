@@ -1,4 +1,4 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import {
   persistStore,
   persistReducer,
@@ -10,6 +10,7 @@ import {
 import storage from "redux-persist/lib/storage";
 import taskSlice from "./slice";
 
+// Persist configuration
 const persistConfig = {
   key: "root",
   storage,
@@ -19,9 +20,11 @@ const rootReducer = combineReducers({
   tasks: taskSlice,
 });
 
+// Create persisted reducer
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-const store = configureStore({
+// Configure the store
+export const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -31,5 +34,11 @@ const store = configureStore({
     }),
 });
 
+// Create persistor
 const persistor = persistStore(store);
-export { persistor, store };
+
+export { persistor };
+
+// Type definitions for the store and dispatch
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;

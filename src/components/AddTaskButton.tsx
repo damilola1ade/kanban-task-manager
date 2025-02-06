@@ -15,6 +15,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
+import { TaskCardProps } from "@/types";
 
 export const AddTaskButton = () => {
   const [title, setTitle] = useState("");
@@ -27,7 +28,7 @@ export const AddTaskButton = () => {
   const onSubmit = () => {
     if (!isFormValid) return;
 
-    const newTask = {
+    const newTask: TaskCardProps = {
       title,
       description,
       stage: "pending",
