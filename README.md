@@ -24,3 +24,7 @@ Stages are:
 - Completed.
 
 You can also edit the title and description of a task by clicking the Edit button. To delete a task, click the Delete button which prompts a modal to confirm if you want to delete the modal or not.
+
+## Time taken
+
+5 hours
