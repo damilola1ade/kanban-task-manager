@@ -29,9 +29,9 @@ export const TaskCard = ({
         className="cursor-grab active:cursor-grabbing"
       >
         <Card className="w-40 md:w-full">
-          <CardHeader className="text-left truncate">
+          <CardHeader className="text-left">
             <CardTitle>{title}</CardTitle>
-            <CardDescription>{description}</CardDescription>
+            <CardDescription className="truncate">{description}</CardDescription>
           </CardHeader>
           <CardFooter className="flex flex-col lg:flex-row justify-between">
             <EditTaskButton
