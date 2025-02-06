@@ -34,8 +34,6 @@ export const AddTaskButton = () => {
     };
 
     dispatch(addTask(newTask));
-
-    // Clear inputs & close dialog
     setTitle("");
     setDescription("");
   };
