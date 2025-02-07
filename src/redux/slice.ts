@@ -1,14 +1,12 @@
 import { TaskCardProps } from "@/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-let nextId = 1;
-
 const taskSlice = createSlice({
   name: "task",
   initialState: [] as TaskCardProps[],
   reducers: {
     addTask: (state, action: PayloadAction<Omit<TaskCardProps, "id">>) => {
-      state.push({ id: nextId++, ...action.payload });
+      state.push(action.payload);
     },
     editTask: (
       state,
@@ -20,7 +18,7 @@ const taskSlice = createSlice({
         task.description = action.payload.description;
       }
     },
-    deleteTask: (state, action: PayloadAction<number>) => {
+    deleteTask: (state, action: PayloadAction<string>) => {
       return state.filter((task) => task.id !== action.payload);
     },
     updateTaskStage: (

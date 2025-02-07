@@ -3,7 +3,7 @@
 export type TaskStages = "pending" | "in progress" | "completed";
 
 export type TaskCardProps = {
-  id?: any;
+  id?: string;
   title: string;
   description?: string;
   stage: TaskStages;
@@ -11,6 +11,13 @@ export type TaskCardProps = {
 };
 
 export type DropIndicatorProps = {
-  beforeId: any;
+  beforeId: string;
+  stage: TaskStages;
+};
+
+export type ColumnProps = {
+  title: string;
+  headingColor: string;
+  tasks: TaskCardProps[];
   stage: TaskStages;
 };

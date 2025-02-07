@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAppDispatch } from "@/hooks";
 import { addTask } from "@/redux/slice";
+import { nanoid } from "@reduxjs/toolkit";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -29,6 +30,7 @@ export const AddTaskButton = () => {
     if (!isFormValid) return;
 
     const newTask: TaskCardProps = {
+      id: nanoid(),
       title,
       description,
       stage: "pending",

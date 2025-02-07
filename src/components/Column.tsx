@@ -1,16 +1,9 @@
 import { useAppDispatch } from "@/hooks";
 import { updateTaskStage } from "@/redux/slice";
-import { TaskCardProps, TaskStages } from "@/types";
+import { ColumnProps, TaskCardProps } from "@/types";
 import { useState, DragEvent } from "react";
 import { DropIndicator } from "./DropIndicator";
 import { TaskCard } from "./TaskCard";
-
-type ColumnProps = {
-  title: string;
-  headingColor: string;
-  tasks: TaskCardProps[];
-  stage: TaskStages;
-};
 
 export const Column = ({ title, headingColor, tasks, stage }: ColumnProps) => {
   const [active, setActive] = useState(false);
@@ -21,18 +14,18 @@ export const Column = ({ title, headingColor, tasks, stage }: ColumnProps) => {
     e: DragEvent<HTMLDivElement>,
     task: TaskCardProps
   ) => {
-    if (e.dataTransfer) {
+    if (task.id) {
       e.dataTransfer.setData("taskId", task.id);
     }
   };
 
   const handleDragEnd = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
-    const taskId = e.dataTransfer ? e.dataTransfer.getData("taskId") : null;
+    const taskId = e.dataTransfer.getData("taskId");
 
     if (!taskId) return;
 
-    dispatch(updateTaskStage({ id: Number(taskId), stage }));
+    dispatch(updateTaskStage({ id: taskId, stage }));
 
     setActive(false);
     clearHighlights();
@@ -116,7 +109,7 @@ export const Column = ({ title, headingColor, tasks, stage }: ColumnProps) => {
             <TaskCard key={c.id} {...c} handleDragStart={handleDragStart} />
           );
         })}
-        <DropIndicator beforeId={null} stage={stage} />
+        <DropIndicator beforeId={""} stage={stage} />
       </div>
     </div>
   );
