@@ -23,7 +23,7 @@ export const TaskCard = ({
       <DropIndicator beforeId={id} stage={stage} />
       <motion.div
         layout
-        layoutId={id.toString()}
+        layoutId={id}
         draggable="true"
         onDragStart={(e) => handleDragStart(e, { id })}
         className="cursor-grab active:cursor-grabbing"

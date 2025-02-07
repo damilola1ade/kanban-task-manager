@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button";
 import { useAppDispatch } from "@/hooks";
 import { deleteTask } from "@/redux/slice";
 
-export const DeleteTaskButton = ({ id }: { id: number }) => {
+export const DeleteTaskButton = ({ id }: { id: string }) => {
   const dispatch = useAppDispatch();
 
   return (

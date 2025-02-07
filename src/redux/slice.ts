@@ -5,7 +5,7 @@ const taskSlice = createSlice({
   name: "task",
   initialState: [] as TaskCardProps[],
   reducers: {
-    addTask: (state, action: PayloadAction<Omit<TaskCardProps, "id">>) => {
+    addTask: (state, action: PayloadAction<TaskCardProps>) => {
       state.push(action.payload);
     },
     editTask: (

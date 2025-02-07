@@ -3,7 +3,7 @@
 export type TaskStages = "pending" | "in progress" | "completed";
 
 export type TaskCardProps = {
-  id?: string;
+  id: string;
   title: string;
   description?: string;
   stage: TaskStages;
